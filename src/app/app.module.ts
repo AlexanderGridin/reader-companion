@@ -10,13 +10,16 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { HttpClientModule } from '@angular/common/http';
+import { BooksListComponent } from './components/books-list/books-list.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BooksListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     PdfViewerModule,
     MatCardModule,
     MatButtonModule,

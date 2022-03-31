@@ -1,14 +1,18 @@
+<app-books-list></app-books-list>
+
 <mat-toolbar color="primary">
   <button
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with menu icon"
-    (click)="drawer.toggle()"
+    (click)="toggleSideNav()"
   >
     <mat-icon>menu</mat-icon>
   </button>
-  <span>My App</span>
+
+  <span>{{ appName }}</span>
   <span class="example-spacer"></span>
+
   <button
     mat-icon-button
     class="example-icon favorite-icon"
@@ -16,6 +20,7 @@
   >
     <mat-icon>favorite</mat-icon>
   </button>
+
   <button
     mat-icon-button
     class="example-icon"
@@ -25,47 +30,46 @@
   </button>
 </mat-toolbar>
 
-<mat-drawer-container
+<mat-sidenav-container
   class="example-container"
-  autosize
-  style="height: calc(100% - 65px)"
+  style="height: calc(100% - 64px)"
 >
-  <mat-drawer #drawer class="example-sidenav" mode="over">
-    <p>Auto-resizing sidenav</p>
-  </mat-drawer>
+  <mat-sidenav mode="over" [opened]="isShowSidenav" (closed)="hideSideNav()"
+    >Sidenav content</mat-sidenav
+  >
+  <mat-sidenav-content>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-5">
+          <mat-card>
+            <mat-card-title>Actions Buttons</mat-card-title>
+            <mat-card-subtitle>Start</mat-card-subtitle>
+            <mat-card-actions>
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
 
-  <div class="container-fluid">
-    <h1>Read Companion</h1>
-    <div class="row">
-      <div class="col-5">
-        <mat-card>
-          <mat-card-title>Actions Buttons</mat-card-title>
-          <mat-card-subtitle>Start</mat-card-subtitle>
-          <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions>
-        </mat-card>
-
-        <mat-card class="mt-2">
-          <mat-card-title>Actions Buttons</mat-card-title>
-          <mat-card-subtitle>End</mat-card-subtitle>
-          <mat-card-actions align="end">
-            <button mat-button>Like</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-      <div class="col-7">
-        <mat-card>
-          <pdf-viewer
-            [src]="'/assets/angular-ninja.pdf'"
-            [render-text]="true"
-            [original-size]="false"
-            style="height: 700px"
-          ></pdf-viewer>
-        </mat-card>
+          <mat-card class="mt-2">
+            <mat-card-title>Actions Buttons</mat-card-title>
+            <mat-card-subtitle>End</mat-card-subtitle>
+            <mat-card-actions align="end">
+              <button mat-button>Like</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div class="col-7">
+          <mat-card>
+            <pdf-viewer
+              [src]="'/assets/angular-ninja.pdf'"
+              [render-text]="true"
+              [original-size]="false"
+              style="height: 700px"
+            ></pdf-viewer>
+          </mat-card>
+        </div>
       </div>
     </div>
-  </div>
-</mat-drawer-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>
