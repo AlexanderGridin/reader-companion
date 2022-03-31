@@ -7,19 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ReadCompanion';
-
-  public isShowSidenav = false;
-  public readonly appName = 'Read Companion';
-
-  public showSideNav(): void {
-    this.isShowSidenav = true;
-  }
-
-  public hideSideNav(): void {
-    this.isShowSidenav = false;
-  }
-
-  public toggleSideNav(): void {
-    this.isShowSidenav = !this.isShowSidenav;
-  }
 }

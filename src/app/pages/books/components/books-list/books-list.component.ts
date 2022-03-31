@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Book, BooksService } from 'app/services/books/books.service';
+import {
+  Book,
+  BooksService,
+} from 'app/pages/books/services/books/books.service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-books-list',
+  selector: 'rc-books-list',
   templateUrl: './books-list.component.html',
   styleUrls: ['./books-list.component.scss'],
 })

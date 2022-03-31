@@ -1,0 +1,19 @@
+<rc-header #header></rc-header>
+
+<mat-sidenav-container
+  class="example-container"
+  style="height: calc(100% - 64px)"
+>
+  <mat-sidenav
+    mode="over"
+    [opened]="header.isShowSidenav"
+    (closed)="header.hideSideNav()"
+    >Sidenav content</mat-sidenav
+  >
+  <mat-sidenav-content>
+    <div class="container-fluid">
+      <h1 *ngIf="pageTitle" class="page-title">{{ pageTitle }}</h1>
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
