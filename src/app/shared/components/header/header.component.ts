@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SidebarService } from '@shared/services/sidebar/sidebar.service';
 
 @Component({
   selector: 'rc-header',
@@ -8,18 +9,11 @@ import { Component, Input } from '@angular/core';
 export class HeaderComponent {
   @Input() public pageTitle!: string;
 
-  public isShowSidenav = false;
   public readonly appName = 'Read Companion';
 
-  public showSideNav(): void {
-    this.isShowSidenav = true;
-  }
+  constructor(private readonly sidebarService: SidebarService) {}
 
-  public hideSideNav(): void {
-    this.isShowSidenav = false;
-  }
-
-  public toggleSideNav(): void {
-    this.isShowSidenav = !this.isShowSidenav;
+  public toggleSidebar(): void {
+    this.sidebarService.toggleVisibility();
   }
 }

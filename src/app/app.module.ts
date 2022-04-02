@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { SharedModule } from '@shared/shared.module';
 import { BooksModule } from '@pages/books/books.module';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { BooksModule } from '@pages/books/books.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     BooksModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

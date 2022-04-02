@@ -1,13 +1,10 @@
 <div class="page">
-  <rc-header #header [pageTitle]="pageTitle"></rc-header>
+  <rc-header [pageTitle]="pageTitle"></rc-header>
 
   <mat-sidenav-container style="height: calc(100% - 128px)">
-    <mat-sidenav
-      mode="over"
-      [opened]="header.isShowSidenav"
-      (closed)="header.hideSideNav()"
-      >Sidenav content</mat-sidenav
-    >
+    <mat-sidenav mode="over" [opened]="isSidebarOpen" (closed)="closeSidebar()">
+      <rc-navigation></rc-navigation>
+    </mat-sidenav>
     <mat-sidenav-content class="page__content">
       <div class="container-fluid">
         <ng-content></ng-content>

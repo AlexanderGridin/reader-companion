@@ -11,16 +11,25 @@ import { PageLayoutComponent } from '@shared/components/page-layout/page-layout.
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ImageComponent } from './components/image/image.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+
+import { RouterModule } from '@angular/router';
+import { TestComponentComponent } from './components/test-component/test-component.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 const declarations = [
   PageLayoutComponent,
   HeaderComponent,
   FooterComponent,
   ImageComponent,
+  NavigationComponent,
+  TestComponentComponent,
+  SpinnerComponent,
 ];
 
 const imports = [
   CommonModule,
+  RouterModule,
   MatCardModule,
   MatButtonModule,
   MatIconModule,

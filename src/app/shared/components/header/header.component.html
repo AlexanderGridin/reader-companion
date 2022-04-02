@@ -10,12 +10,12 @@
   <button
     mat-icon-button
     aria-label="Icon-button with menu icon"
-    (click)="toggleSideNav()"
+    (click)="toggleSidebar()"
   >
     <mat-icon>menu</mat-icon>
   </button>
 
-  <span>{{ appName }}</span>
+  <a href="" routerLink="/" class="logo">{{ appName }}</a>
 </ng-template>
 
 <ng-template #middleColumn>

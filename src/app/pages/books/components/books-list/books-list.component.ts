@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { BooksService } from '@pages/books/services/books/books.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 import { Book } from '@pages/books/models/book.model';
 
 @Component({
@@ -8,25 +6,8 @@ import { Book } from '@pages/books/models/book.model';
   templateUrl: './books-list.component.html',
   styleUrls: ['./books-list.component.scss'],
 })
-export class BooksListComponent implements OnInit {
-  public books: Array<Book> = [];
+export class BooksListComponent {
+  @Input() public books: Array<Book> = [];
+
   public readonly trackByIndex = (index: number): number => index;
-
-  private readonly destroy$ = new Subject();
-
-  constructor(private readonly service: BooksService) {}
-
-  public ngOnInit(): void {
-    this.service
-      .getBooks()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((books: Array<Book>) => {
-        this.books = books;
-      });
-  }
-
-  public ngOnDestroy(): void {
-    this.destroy$.next(null);
-    this.destroy$.complete();
-  }
 }

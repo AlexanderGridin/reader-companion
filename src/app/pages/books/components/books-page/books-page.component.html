@@ -1,3 +1,2 @@
-<rc-page-layout [pageTitle]="pageTitle">
-  <rc-books-list></rc-books-list>
-</rc-page-layout>
+<rc-books-list *ngIf="books" [books]="books"></rc-books-list>
+<rc-spinner [isLoading]="isLoading"></rc-spinner>
