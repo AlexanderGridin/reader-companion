@@ -1,16 +1,15 @@
 <mat-toolbar color="primary">
   <ng-container *ngTemplateOutlet="leftColumn"></ng-container>
-  <span class="example-spacer"></span>
+  <span class="spacer"></span>
   <ng-container *ngTemplateOutlet="middleColumn"></ng-container>
-  <span class="example-spacer"></span>
+  <span class="spacer"></span>
   <ng-container *ngTemplateOutlet="rightColumn"></ng-container>
 </mat-toolbar>
 
 <ng-template #leftColumn>
   <button
     mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
+    aria-label="Icon-button with menu icon"
     (click)="toggleSideNav()"
   >
     <mat-icon>menu</mat-icon>
@@ -24,19 +23,11 @@
 </ng-template>
 
 <ng-template #rightColumn>
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
+  <button mat-icon-button aria-label="Icon-button with heart icon">
     <mat-icon>favorite</mat-icon>
   </button>
 
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-  >
+  <button mat-icon-button aria-label="Icon-button with share icon">
     <mat-icon>share</mat-icon>
   </button>
 </ng-template>
