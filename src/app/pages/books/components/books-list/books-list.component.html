@@ -4,7 +4,12 @@
     class="books-list__item"
   >
     <mat-card>
-      <img mat-card-image [src]="book.coverUrl" [alt]="book.title" />
+      <rc-image
+        mat-card-image
+        [src]="book.coverUrl"
+        [alt]="book.title"
+        [height]="370"
+      ></rc-image>
       <mat-card-title>{{ book.title }}</mat-card-title>
       <div class="book__description">
         <div><strong>Total pages:</strong> {{ book.totalPages }}</div>
