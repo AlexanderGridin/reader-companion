@@ -10,6 +10,7 @@ import { PageLayoutComponent } from '@shared/components/page-layout/page-layout.
 import { HeaderComponent } from './components/header/header.component';
 
 const declarations = [PageLayoutComponent, HeaderComponent];
+
 const imports = [
   CommonModule,
   MatCardModule,

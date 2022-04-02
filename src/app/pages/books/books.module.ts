@@ -10,6 +10,7 @@ import { SharedModule } from '@shared/shared.module';
 import { BooksPageComponent } from './components/books-page/books-page.component';
 
 const declarations = [BooksPageComponent, BooksListComponent];
+
 const imports = [CommonModule, HttpClientModule, PdfViewerModule, SharedModule];
 
 @NgModule({
