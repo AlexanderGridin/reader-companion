@@ -1,4 +1,4 @@
-<rc-header #header></rc-header>
+<rc-header #header [pageTitle]="pageTitle"></rc-header>
 
 <mat-sidenav-container style="height: calc(100% - 128px)">
   <mat-sidenav
@@ -9,7 +9,6 @@
   >
   <mat-sidenav-content style="border: 1px solid red">
     <div class="container-fluid">
-      <h1 *ngIf="pageTitle" class="page-title">{{ pageTitle }}</h1>
       <ng-content></ng-content>
     </div>
   </mat-sidenav-content>

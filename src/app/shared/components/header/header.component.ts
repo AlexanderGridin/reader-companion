@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'rc-header',
@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  @Input() public pageTitle!: string;
+
   public isShowSidenav = false;
   public readonly appName = 'Read Companion';
 
