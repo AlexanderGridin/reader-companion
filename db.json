@@ -2,13 +2,27 @@
   "books": [
     {
       "id": 1,
-      "title": "Test Book",
-      "pages": 100
+      "title": "Angular Ninja",
+      "totalPages": 321,
+      "fileUrl": "/assets/books/files/angular-ninja.pdf",
+      "coverUrl": "/assets/books/covers/angular-ninja.jpg",
+      "currentPage": 1
     },
     {
       "id": 2,
-      "title": "Test Book2",
-      "pages": 200
+      "title": "Computer Science",
+      "totalPages": 305,
+      "fileUrl": "/assets/books/files/computer-science.pdf",
+      "coverUrl": "/assets/books/covers/computer-science.jpg",
+      "currentPage": 5
+    },
+    {
+      "id": 3,
+      "title": "Linux Bible",
+      "totalPages": 928,
+      "fileUrl": "/assets/books/files/linux-bible.pdf",
+      "coverUrl": "/assets/books/covers/linux-bible.jpg",
+      "currentPage": 105
     }
   ]
 }

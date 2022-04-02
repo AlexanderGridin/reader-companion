@@ -8,6 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { PageLayoutComponent } from '@shared/components/page-layout/page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const declarations = [PageLayoutComponent, HeaderComponent];
 
@@ -21,7 +22,7 @@ const imports = [
 ];
 
 @NgModule({
-  declarations: [...declarations],
+  declarations: [...declarations, FooterComponent],
   imports: [...imports],
   exports: [...imports, ...declarations],
 })

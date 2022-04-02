@@ -1,4 +1,23 @@
-<div class="row">
+<ul *ngIf="books.length" class="books-list">
+  <li
+    *ngFor="let book of books; trackBy: trackByIndex"
+    class="books-list__item"
+  >
+    <mat-card>
+      <img mat-card-image [src]="book.coverUrl" [alt]="book.title" />
+      <mat-card-title>{{ book.title }}</mat-card-title>
+      <div class="book__description">
+        <div><strong>Total pages:</strong> {{ book.totalPages }}</div>
+        <div><strong>Current page:</strong> {{ book.currentPage }}</div>
+      </div>
+      <mat-card-actions>
+        <button mat-flat-button color="primary">Read</button>
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</ul>
+
+<!-- <div class="row">
   <div class="col-5">
     <mat-card>
       <mat-card-title>Actions Buttons</mat-card-title>
@@ -21,11 +40,11 @@
   <div class="col-7">
     <mat-card>
       <pdf-viewer
-        [src]="'/assets/angular-ninja.pdf'"
+        [src]="'/assets/books/files/angular-ninja.pdf'"
         [render-text]="true"
         [original-size]="false"
         style="height: 700px"
       ></pdf-viewer>
     </mat-card>
   </div>
-</div>
+</div> -->

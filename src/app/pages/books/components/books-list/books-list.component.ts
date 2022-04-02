@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Book,
-  BooksService,
-} from 'app/pages/books/services/books/books.service';
+import { BooksService } from '@pages/books/services/books/books.service';
 import { Subject, takeUntil } from 'rxjs';
+import { Book } from '@pages/books/models/book.model';
 
 @Component({
   selector: 'rc-books-list',
@@ -11,6 +9,9 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./books-list.component.scss'],
 })
 export class BooksListComponent implements OnInit {
+  public books: Array<Book> = [];
+  public readonly trackByIndex = (index: number): number => index;
+
   private readonly destroy$ = new Subject();
 
   constructor(private readonly service: BooksService) {}
@@ -20,7 +21,7 @@ export class BooksListComponent implements OnInit {
       .getBooks()
       .pipe(takeUntil(this.destroy$))
       .subscribe((books: Array<Book>) => {
-        console.log(books);
+        this.books = books;
       });
   }
 
