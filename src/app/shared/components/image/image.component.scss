@@ -1,0 +1,13 @@
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgrey;
+}
+
+.image__origin {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
