@@ -10,6 +10,8 @@
   <button
     mat-icon-button
     aria-label="Icon-button with menu icon"
+    class="menu-button"
+    (focus)="handleFocus()"
     (click)="toggleSidebar()"
   >
     <mat-icon>menu</mat-icon>
