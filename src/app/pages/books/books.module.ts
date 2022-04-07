@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PdfViewerModule } from 'ng2-pdf-viewer';
-
 import { HttpClientModule } from '@angular/common/http';
 
 import { BooksListComponent } from '@pages/books/components/books-list/books-list.component';
@@ -15,6 +13,11 @@ const routes: Routes = [
     path: '',
     component: BooksPageComponent,
   },
+  {
+    path: 'books/:id',
+    loadChildren: () =>
+      import('@pages/book/book.module').then((m) => m.BookModule),
+  },
 ];
 
 const declarations = [BooksPageComponent, BooksListComponent];
@@ -22,7 +25,6 @@ const declarations = [BooksPageComponent, BooksListComponent];
 const imports = [
   CommonModule,
   HttpClientModule,
-  PdfViewerModule,
   SharedModule,
   RouterModule.forChild(routes),
 ];

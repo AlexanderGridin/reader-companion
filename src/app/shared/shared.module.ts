@@ -16,6 +16,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { RouterModule } from '@angular/router';
 import { TestComponentComponent } from './components/test-component/test-component.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { SomeComponentComponent } from './components/some-component/some-component.component';
 
 const declarations = [
   PageLayoutComponent,
@@ -36,6 +38,8 @@ const imports = [
   MatToolbarModule,
   MatSidenavModule,
   MatProgressSpinnerModule,
+  MatTabsModule,
+  SomeComponentComponent,
 ];
 
 @NgModule({

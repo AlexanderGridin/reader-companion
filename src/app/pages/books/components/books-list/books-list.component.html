@@ -16,40 +16,14 @@
         <div><strong>Current page:</strong> {{ book.currentPage }}</div>
       </div>
       <mat-card-actions>
-        <button mat-flat-button color="primary">Read</button>
+        <a
+          href=""
+          [routerLink]="['/books', book.id]"
+          mat-flat-button
+          color="primary"
+          >Read</a
+        >
       </mat-card-actions>
     </mat-card>
   </li>
 </ul>
-
-<!-- <div class="row">
-  <div class="col-5">
-    <mat-card>
-      <mat-card-title>Actions Buttons</mat-card-title>
-      <mat-card-subtitle>Start</mat-card-subtitle>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
-
-    <mat-card class="mt-2">
-      <mat-card-title>Actions Buttons</mat-card-title>
-      <mat-card-subtitle>End</mat-card-subtitle>
-      <mat-card-actions align="end">
-        <button mat-button>Like</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-  <div class="col-7">
-    <mat-card>
-      <pdf-viewer
-        [src]="'/assets/books/files/angular-ninja.pdf'"
-        [render-text]="true"
-        [original-size]="false"
-        style="height: 700px"
-      ></pdf-viewer>
-    </mat-card>
-  </div>
-</div> -->
