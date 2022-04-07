@@ -1,0 +1,24 @@
+<div class="row h-100" *ngIf="book">
+  <div class="col-5">
+    <nav mat-tab-nav-bar [tabPanel]="tabPannel" [backgroundColor]="'primary'">
+      <a mat-tab-link href="" routerLink="notes">Notes</a>
+      <a mat-tab-link href="" routerLink="test-2">Test 2</a>
+      <a mat-tab-link href="" routerLink="test-3">Test 3</a>
+    </nav>
+    <mat-tab-nav-panel #tabPannel>
+      <router-outlet></router-outlet>
+    </mat-tab-nav-panel>
+  </div>
+
+  <div class="col-7">
+    <mat-card class="h-100">
+      <pdf-viewer
+        [src]="book.fileUrl"
+        [render-text]="true"
+        [original-size]="false"
+        style="height: 100%"
+      ></pdf-viewer>
+    </mat-card>
+  </div>
+</div>
+<rc-spinner [isLoading]="isLoading"></rc-spinner>

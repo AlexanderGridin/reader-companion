@@ -4,12 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
+
+import { SharedModule } from '@shared/shared.module';
+import { BooksModule } from '@pages/books/books.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,12 +14,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    PdfViewerModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSidenavModule,
+    BooksModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

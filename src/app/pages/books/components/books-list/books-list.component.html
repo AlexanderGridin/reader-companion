@@ -1,0 +1,29 @@
+<ul *ngIf="books.length" class="books-list">
+  <li
+    *ngFor="let book of books; trackBy: trackByIndex"
+    class="books-list__item"
+  >
+    <mat-card class="boock-card">
+      <rc-image
+        mat-card-image
+        [src]="book.coverUrl"
+        [alt]="book.title"
+        [height]="370"
+      ></rc-image>
+      <mat-card-title>{{ book.title }}</mat-card-title>
+      <div class="book__description">
+        <div><strong>Total pages:</strong> {{ book.totalPages }}</div>
+        <div><strong>Current page:</strong> {{ book.currentPage }}</div>
+      </div>
+      <mat-card-actions>
+        <a
+          href=""
+          [routerLink]="['/books', book.id]"
+          mat-flat-button
+          color="primary"
+          >Read</a
+        >
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</ul>

@@ -20,7 +20,9 @@
     "module": "es2020",
     "lib": ["es2020", "dom"],
     "paths": {
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@pages/*": ["app/pages/*"],
+      "@shared/*": ["app/shared/*"]
     }
   },
   "angularCompilerOptions": {

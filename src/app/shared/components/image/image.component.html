@@ -1,0 +1,15 @@
+<div
+  *ngIf="src"
+  class="image"
+  [ngStyle]="{ height: height ? height + 'px' : 'auto' }"
+>
+  <img
+    class="image__origin"
+    [ngClass]="{ 'visually-hidden': isLoading }"
+    [ngStyle]="{ height: height ? height + 'px' : 'auto' }"
+    [src]="src"
+    [alt]="alt"
+    (load)="handleImageLoading()"
+  />
+  <rc-spinner [isLoading]="isLoading"></rc-spinner>
+</div>
