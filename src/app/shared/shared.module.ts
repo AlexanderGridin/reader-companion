@@ -27,6 +27,7 @@ const declarations = [
   NavigationComponent,
   TestComponentComponent,
   SpinnerComponent,
+  SomeComponentComponent,
 ];
 
 const imports = [
@@ -39,7 +40,6 @@ const imports = [
   MatSidenavModule,
   MatProgressSpinnerModule,
   MatTabsModule,
-  SomeComponentComponent,
 ];
 
 @NgModule({
