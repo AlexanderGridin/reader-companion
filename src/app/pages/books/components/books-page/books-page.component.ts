@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Book } from '@shared/models/book.model';
-import { BooksService } from '@pages/books/services/books/books.service';
+import { BooksService } from '@shared/services/books/books.service';
 import { PageTitleService } from '@shared/services/page-title/page-title.service';
 import { SidebarService } from '@shared/services/sidebar/sidebar.service';
 import { Subject, takeUntil } from 'rxjs';
