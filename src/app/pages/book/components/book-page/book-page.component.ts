@@ -1,37 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { BooksService } from '@pages/books/services/books/books.service';
+import { BooksService } from '@shared/services/books/books.service';
 import { Book } from '@shared/models/book.model';
 import { PageTitleService } from '@shared/services/page-title/page-title.service';
+import { takeUntil } from 'rxjs';
+import { PageBase } from '@shared/classes/page-base';
 
 @Component({
   selector: 'rc-book-page',
   templateUrl: './book-page.component.html',
   styleUrls: ['./book-page.component.scss'],
 })
-export class BookPageComponent implements OnInit {
+export class BookPageComponent extends PageBase implements OnInit {
   public book!: Book;
-  public isLoading!: boolean;
 
   constructor(
     private readonly booksService: BooksService,
     private readonly route: ActivatedRoute,
     private readonly pageTitleService: PageTitleService
-  ) {}
+  ) {
+    super();
+  }
 
   public ngOnInit(): void {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      this.isLoading = true;
+    this.route.paramMap
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((params: ParamMap) => {
+        const bookId: string | null = params.get('id');
 
-      const bookId: string | null = params.get('id');
+        if (!bookId) return;
 
-      if (!bookId) return;
+        this.handleBookIdRouteParam(bookId);
+      });
+  }
 
-      this.booksService.getBook(+bookId).subscribe((book: Book) => {
+  private handleBookIdRouteParam(bookId: string): void {
+    this.startLoading();
+
+    this.booksService
+      .getBook(+bookId)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((book: Book) => {
         this.book = book;
         this.pageTitleService.setTitle(book.title);
-        this.isLoading = false;
+        this.endLoading();
       });
-    });
   }
 }
