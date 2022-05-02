@@ -22,6 +22,7 @@ export abstract class PageBase implements OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    console.log('page component destroyed');
     this.destroy$.next();
     this.destroy$.complete();
   }

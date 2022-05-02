@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { BooksService } from '@shared/services/books/books.service';
+import { ActivatedRoute } from '@angular/router';
 import { Book } from '@shared/models/book.model';
 import { PageTitleService } from '@shared/services/page-title/page-title.service';
-import { takeUntil } from 'rxjs';
 import { PageBase } from '@shared/classes/page-base';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'rc-book-page',
@@ -16,37 +15,20 @@ export class BookPageComponent extends PageBase implements OnInit {
   public currentPage!: number;
 
   constructor(
-    private readonly booksService: BooksService,
-    private readonly route: ActivatedRoute,
+    private readonly activatedRoute: ActivatedRoute,
     private readonly pageTitleService: PageTitleService
   ) {
     super();
   }
 
   public ngOnInit(): void {
-    this.route.paramMap
+    this.activatedRoute.data
       .pipe(takeUntil(this.destroy$))
-      .subscribe((params: ParamMap) => {
-        const bookId: string | null = params.get('id');
-
-        if (!bookId) return;
-
-        this.handleBookIdRouteParam(bookId);
-      });
-  }
-
-  private handleBookIdRouteParam(bookId: string): void {
-    this.startLoading();
-
-    this.booksService
-      .getBook(+bookId)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((book: Book) => {
-        this.book = book;
-        this.pageTitleService.setTitle(book.title);
-        this.currentPage = book.currentPage;
-
-        this.endLoading();
+      .subscribe((data) => {
+        console.log(data);
+        this.book = data['book'];
+        this.currentPage = this.book.currentPage;
+        this.pageTitleService.setTitle(this.book.title);
       });
   }
 
