@@ -1,53 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { BooksService } from '@shared/services/books/books.service';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from '@shared/models/book.model';
-import { PageTitleService } from '@shared/services/page-title/page-title.service';
-import { takeUntil } from 'rxjs';
 import { PageBase } from '@shared/classes/page-base';
+import { PageTitleService } from '@shared/services/page-title/page-title.service';
 
 @Component({
   selector: 'rc-book-page',
   templateUrl: './book-page.component.html',
   styleUrls: ['./book-page.component.scss'],
 })
-export class BookPageComponent extends PageBase implements OnInit {
-  public book!: Book;
+export class BookPageComponent extends PageBase<Book> {
   public currentPage!: number;
 
   constructor(
-    private readonly booksService: BooksService,
-    private readonly route: ActivatedRoute,
-    private readonly pageTitleService: PageTitleService
+    router: Router,
+    activatedRoute: ActivatedRoute,
+    pageTitleService: PageTitleService
   ) {
-    super();
+    super({
+      router,
+      activatedRoute,
+      resolverResponseProperty: 'book',
+      pageTitleService,
+    });
   }
 
-  public ngOnInit(): void {
-    this.route.paramMap
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((params: ParamMap) => {
-        const bookId: string | null = params.get('id');
-
-        if (!bookId) return;
-
-        this.handleBookIdRouteParam(bookId);
-      });
-  }
-
-  private handleBookIdRouteParam(bookId: string): void {
-    this.startLoading();
-
-    this.booksService
-      .getBook(+bookId)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((book: Book) => {
-        this.book = book;
-        this.pageTitleService.setTitle(book.title);
-        this.currentPage = book.currentPage;
-
-        this.endLoading();
-      });
+  protected calculateTitle(): string {
+    return this.viewModel?.title ? this.viewModel.title : '';
   }
 
   public handlePageChange(pageNumber: number): void {

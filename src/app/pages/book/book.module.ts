@@ -8,11 +8,15 @@ import { NotesTabComponent } from './components/notes-tab/notes-tab.component';
 import { DescriptionTabComponent } from './components/description-tab/description-tab.component';
 import { SomeComponentComponent } from '@shared/components/some-component/some-component.component';
 import { TestComponentComponent } from '@shared/components/test-component/test-component.component';
+import { BookPageResolver } from '@shared/resolvers/book-page.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: BookPageComponent,
+    resolve: {
+      book: BookPageResolver,
+    },
     children: [
       {
         path: 'notes',

@@ -1,6 +1,10 @@
 <ul>
   <li>
-    <a href="" [routerLink]="['/books']" routerLinkActive="router-link-active"
+    <a
+      href=""
+      [routerLink]="['books']"
+      routerLinkActive="router-link-active"
+      (click)="closeSidebar()"
       >Books</a
     >
   </li>
