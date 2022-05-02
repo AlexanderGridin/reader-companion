@@ -25,6 +25,10 @@ export class HeaderComponent {
     this.sidebarService.toggleVisibility();
   }
 
+  public closeSidebar(): void {
+    this.sidebarService.close();
+  }
+
   public handleFocus(): void {
     console.log('button focused');
   }

@@ -17,7 +17,9 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-  <a href="" routerLink="/" class="logo">{{ appName }}</a>
+  <a href="" routerLink="/" class="logo" (click)="closeSidebar()">{{
+    appName
+  }}</a>
 </ng-template>
 
 <ng-template #middleColumn>

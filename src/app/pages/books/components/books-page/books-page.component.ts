@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PageBase } from '@shared/classes/page-base';
 import { Book } from '@shared/models/book.model';
 import { BooksService } from '@shared/services/books/books.service';
 import { PageTitleService } from '@shared/services/page-title/page-title.service';
@@ -10,34 +12,21 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './books-page.component.html',
   styleUrls: ['./books-page.component.scss'],
 })
-export class BooksPageComponent implements OnInit, OnDestroy {
-  public readonly pageTitle = 'Books';
-  public isLoading = true;
-  public books!: Array<Book>;
-
-  private readonly destroy$ = new Subject();
-
+export class BooksPageComponent extends PageBase<Array<Book>> {
   constructor(
-    private readonly service: BooksService,
-    private readonly pageTitleService: PageTitleService,
-    private readonly sidebarService: SidebarService
-  ) {}
-
-  public ngOnInit(): void {
-    this.pageTitleService.setTitle(this.pageTitle);
-
-    this.service
-      .getBooks()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((books: Array<Book>) => {
-        this.books = books;
-        this.isLoading = false;
-        this.sidebarService.close();
-      });
+    router: Router,
+    activatedRoute: ActivatedRoute,
+    pageTitleService: PageTitleService
+  ) {
+    super({
+      router,
+      activatedRoute,
+      resolverResponseProperty: 'books',
+      pageTitleService,
+    });
   }
 
-  public ngOnDestroy(): void {
-    this.destroy$.next(null);
-    this.destroy$.complete();
+  protected calculateTitle(): string {
+    return 'Books';
   }
 }

@@ -1,35 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from '@shared/models/book.model';
-import { PageTitleService } from '@shared/services/page-title/page-title.service';
 import { PageBase } from '@shared/classes/page-base';
-import { takeUntil } from 'rxjs';
+import { PageTitleService } from '@shared/services/page-title/page-title.service';
 
 @Component({
   selector: 'rc-book-page',
   templateUrl: './book-page.component.html',
   styleUrls: ['./book-page.component.scss'],
 })
-export class BookPageComponent extends PageBase implements OnInit {
-  public book!: Book;
+export class BookPageComponent extends PageBase<Book> {
   public currentPage!: number;
 
   constructor(
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly pageTitleService: PageTitleService
+    router: Router,
+    activatedRoute: ActivatedRoute,
+    pageTitleService: PageTitleService
   ) {
-    super();
+    super({
+      router,
+      activatedRoute,
+      resolverResponseProperty: 'book',
+      pageTitleService,
+    });
   }
 
-  public ngOnInit(): void {
-    this.activatedRoute.data
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        console.log(data);
-        this.book = data['book'];
-        this.currentPage = this.book.currentPage;
-        this.pageTitleService.setTitle(this.book.title);
-      });
+  protected calculateTitle(): string {
+    return this.viewModel?.title ? this.viewModel.title : '';
   }
 
   public handlePageChange(pageNumber: number): void {

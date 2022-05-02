@@ -1,4 +1,4 @@
-<div class="row h-100">
+<div class="row h-100" *ngIf="viewModel">
   <div class="col-5">
     <nav mat-tab-nav-bar [tabPanel]="tabPannel" [backgroundColor]="'primary'">
       <a mat-tab-link href="" routerLink="notes">Notes</a>
@@ -14,10 +14,10 @@
     <mat-card class="h-100">
       <pdf-viewer
         style="height: 100%"
-        [src]="book.fileUrl"
+        [src]="viewModel.fileUrl"
         [render-text]="true"
         [original-size]="false"
-        [page]="book.currentPage"
+        [page]="viewModel.currentPage"
         [stick-to-page]="true"
         (pageChange)="handlePageChange($event)"
       ></pdf-viewer>
