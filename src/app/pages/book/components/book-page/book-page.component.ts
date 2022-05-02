@@ -13,6 +13,7 @@ import { PageBase } from '@shared/classes/page-base';
 })
 export class BookPageComponent extends PageBase implements OnInit {
   public book!: Book;
+  public currentPage!: number;
 
   constructor(
     private readonly booksService: BooksService,
@@ -43,7 +44,14 @@ export class BookPageComponent extends PageBase implements OnInit {
       .subscribe((book: Book) => {
         this.book = book;
         this.pageTitleService.setTitle(book.title);
+        this.currentPage = book.currentPage;
+
         this.endLoading();
       });
+  }
+
+  public handlePageChange(pageNumber: number): void {
+    this.currentPage = pageNumber;
+    console.log(`current page: ${this.currentPage}`);
   }
 }

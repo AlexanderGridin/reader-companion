@@ -13,10 +13,14 @@
   <div class="col-7">
     <mat-card class="h-100">
       <pdf-viewer
+        *ngIf="book"
+        style="height: 100%"
         [src]="book.fileUrl"
         [render-text]="true"
         [original-size]="false"
-        style="height: 100%"
+        [page]="currentPage"
+        [stick-to-page]="true"
+        (pageChange)="handlePageChange($event)"
       ></pdf-viewer>
     </mat-card>
   </div>
