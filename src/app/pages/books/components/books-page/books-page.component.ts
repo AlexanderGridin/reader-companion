@@ -1,11 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageBase } from '@shared/classes/page-base';
 import { Book } from '@shared/models/book.model';
-import { BooksService } from '@shared/services/books/books.service';
 import { PageTitleService } from '@shared/services/page-title/page-title.service';
-import { SidebarService } from '@shared/services/sidebar/sidebar.service';
-import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'rc-books-page',
