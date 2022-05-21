@@ -9,6 +9,8 @@ import { DescriptionTabComponent } from './components/description-tab/descriptio
 import { SomeComponentComponent } from '@shared/components/some-component/some-component.component';
 import { TestComponentComponent } from '@shared/components/test-component/test-component.component';
 import { BookPageResolver } from '@shared/resolvers/book-page.resolver';
+import { ApiServiceBase } from '@shared/classes/api-service-base';
+import { BookService } from './services/book.serivce';
 
 const routes: Routes = [
   {
@@ -35,6 +37,7 @@ const routes: Routes = [
 ];
 
 const declarations = [BookPageComponent, NotesTabComponent];
+const providers = [BookService, BookPageResolver];
 const imports = [
   CommonModule,
   RouterModule.forChild(routes),
@@ -44,6 +47,7 @@ const imports = [
 
 @NgModule({
   declarations: [...declarations, DescriptionTabComponent],
+  providers: [...providers],
   imports: [...imports],
 })
 export class BookModule {}

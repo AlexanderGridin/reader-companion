@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { HttpClientModule } from '@angular/common/http';
-
 import { BooksListComponent } from '@pages/books/components/books-list/books-list.component';
 import { SharedModule } from '@shared/shared.module';
 import { BooksPageComponent } from './components/books-page/books-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BooksPageResolver } from '@shared/resolvers/books-page.resolver';
+import { BooksService } from '@shared/services/books/books.service';
 
 const routes: Routes = [
   {
@@ -37,5 +36,6 @@ const imports = [
   declarations: [...declarations],
   imports: [...imports],
   exports: [...declarations],
+  providers: [BooksPageResolver, BooksService],
 })
 export class BooksModule {}
