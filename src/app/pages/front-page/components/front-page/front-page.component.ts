@@ -21,7 +21,7 @@ export class FrontPageComponent extends PageBase<null> {
     });
   }
 
-  protected calculateTitle(): string {
+  protected generateTitle(): string {
     return '';
   }
 }

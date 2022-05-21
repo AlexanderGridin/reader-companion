@@ -23,7 +23,7 @@ export class BooksPageComponent extends PageBase<Array<Book>> {
     });
   }
 
-  protected calculateTitle(): string {
+  protected generateTitle(): string {
     return 'Books';
   }
 }
