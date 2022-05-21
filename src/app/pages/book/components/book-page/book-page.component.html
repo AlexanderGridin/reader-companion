@@ -20,7 +20,11 @@
         [page]="viewModel.currentPage"
         [stick-to-page]="true"
         (pageChange)="handlePageChange($event)"
-      ></pdf-viewer>
+        (error)="handlePdfViewerError($event)"
+        (after-load-complete)="handlePdfViewerLoadComplete($event)"
+        (page-rendered)="handlePageRendered($event)"
+      >
+      </pdf-viewer>
     </mat-card>
   </div>
 </div>
