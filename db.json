@@ -24,5 +24,25 @@
       "coverUrl": "/assets/books/covers/linux-bible.jpg",
       "currentPage": 105
     }
+  ],
+  "notes": [
+    {
+      "id": 1,
+      "bookId": 3,
+      "title": "Test note title",
+      "note": "Test note content"
+    },
+    {
+      "id": 2,
+      "bookId": 3,
+      "title": "2Test note title",
+      "note": "2Test note content"
+    },
+    {
+      "id": 3,
+      "bookId": 1,
+      "title": "3Test note title",
+      "note": "3Test note content"
+    }
   ]
 }
