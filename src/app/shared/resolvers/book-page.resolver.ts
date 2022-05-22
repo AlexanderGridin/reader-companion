@@ -1,27 +1,14 @@
 import { Injectable } from '@angular/core';
-import {
-  Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot,
-} from '@angular/router';
 import { Book } from '@shared/models/book.model';
-import { BooksService } from '@shared/services/books/books.service';
-import { Observable, of } from 'rxjs';
+import { PageResolverBase } from '@shared/classes/page-resolver-base';
+import { BookService } from '@pages/book/services/book.serivce';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class BookPageResolver implements Resolve<Book | null> {
-  constructor(private booksService: BooksService) {}
-
-  resolve(
-    route: ActivatedRouteSnapshot,
-    _: RouterStateSnapshot
-  ): Observable<Book | null> {
-    const bookIdParam = route.paramMap.get('id');
-
-    if (!bookIdParam) return of(null);
-
-    return this.booksService.getBook(+bookIdParam);
+@Injectable()
+export class BookPageResolver extends PageResolverBase<Book> {
+  constructor(apiService: BookService) {
+    super({
+      apiService,
+      routerParam: 'id',
+    });
   }
 }

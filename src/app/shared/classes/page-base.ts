@@ -9,11 +9,18 @@ import {
 import { PageTitleService } from '@shared/services/page-title/page-title.service';
 import { Subject, takeUntil } from 'rxjs';
 
+interface PageBaseParams {
+  router: Router;
+  activatedRoute: ActivatedRoute;
+  resolverResponseProperty?: string;
+  pageTitleService: PageTitleService;
+}
+
 @Component({
   template: '',
 })
-export abstract class PageBase<ViewModel> implements OnInit, OnDestroy {
-  public viewModel!: ViewModel;
+export abstract class PageBase<PageModel> implements OnInit, OnDestroy {
+  public pageModel!: PageModel;
   public destroy$: Subject<void> = new Subject<void>();
 
   private activatedRoute!: ActivatedRoute;
@@ -29,12 +36,7 @@ export abstract class PageBase<ViewModel> implements OnInit, OnDestroy {
       activatedRoute,
       resolverResponseProperty,
       pageTitleService,
-    }: {
-      router: Router;
-      activatedRoute: ActivatedRoute;
-      resolverResponseProperty?: string;
-      pageTitleService: PageTitleService;
-    }
+    }: PageBaseParams
   ) {
     this.activatedRoute = activatedRoute;
     this.resolverResponseProperty = resolverResponseProperty || '';
@@ -43,7 +45,7 @@ export abstract class PageBase<ViewModel> implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.setPageTitle();
+    this.setTitle();
     this.setSubscriptions();
   }
 
@@ -82,13 +84,13 @@ export abstract class PageBase<ViewModel> implements OnInit, OnDestroy {
     this.activatedRoute.data
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
-        this.viewModel = data[this.resolverResponseProperty];
-        this.setPageTitle();
+        this.pageModel = data[this.resolverResponseProperty];
+        this.setTitle();
       });
   }
 
-  private setPageTitle(): void {
-    this.pageTitleService.setTitle(this.calculateTitle());
+  private setTitle(): void {
+    this.pageTitleService.setTitle(this.generateTitle());
   }
 
   public startLoading(): void {
@@ -103,5 +105,5 @@ export abstract class PageBase<ViewModel> implements OnInit, OnDestroy {
     return this._isLoading;
   }
 
-  protected abstract calculateTitle(): string;
+  protected abstract generateTitle(): string;
 }

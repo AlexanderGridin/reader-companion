@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "app:dev": "ng serve -o",
-    "mock-server": "json-server db.json --routes routes.json --delay 500"
+    "server:mock": "json-server db.json --routes routes.json --delay 500"
   },
   "private": true,
   "dependencies": {

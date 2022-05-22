@@ -3,20 +3,27 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { getFullApiUrl } from '@shared/utils/api.utils';
 import { Book } from '@shared/models/book.model';
+import { ApiServiceBase } from '@shared/classes/api-service-base';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class BooksService {
-  public constructor(private readonly http: HttpClient) {}
+@Injectable()
+export class BooksService extends ApiServiceBase<Array<Book>, Array<Book>> {
+  public constructor(protected override http: HttpClient) {
+    super(http);
+  }
 
-  public getBooks(): Observable<Array<Book>> {
+  public getEntity(): Observable<Array<Book>> {
     const apiUrl = getFullApiUrl('books');
     return this.http.get<Array<Book>>(apiUrl);
   }
 
-  public getBook(id: number): Observable<Book> {
-    const apiUrl = getFullApiUrl('books/${id}').replace('${id}', id.toString());
-    return this.http.get<Book>(apiUrl);
+  public createEntity(entity: Array<Book>): Observable<Array<Book>> {
+    throw new Error('Method not implemented');
+  }
+
+  public updateEntity(
+    id: string | number,
+    entity: Array<Book>
+  ): Observable<Array<Book>> {
+    throw new Error('Method not implemented');
   }
 }

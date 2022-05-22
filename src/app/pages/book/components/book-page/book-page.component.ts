@@ -33,15 +33,15 @@ export class BookPageComponent extends PageBase<Book> implements OnInit {
     super.ngOnInit();
 
     this.notesService
-      .getAllByBookId(this.viewModel.id)
+      .getAllByBookId(this.pageModel.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe((notes: Array<Note>) => {
         console.log(notes);
       });
   }
 
-  protected calculateTitle(): string {
-    return this.viewModel?.title || '';
+  protected generateTitle(): string {
+    return this.pageModel?.title || '';
   }
 
   public handlePageChange(pageNumber: number): void {
