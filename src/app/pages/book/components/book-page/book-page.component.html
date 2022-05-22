@@ -11,7 +11,7 @@
   </div>
 
   <div class="col-7">
-    <mat-card class="h-100">
+    <mat-card style="height: 95%">
       <pdf-viewer
         style="height: 100%"
         [src]="pageModel.fileUrl"
@@ -20,12 +20,21 @@
         [page]="pageModel.currentPage"
         [stick-to-page]="true"
         (pageChange)="handlePageChange($event)"
-        (error)="handlePdfViewerError($event)"
-        (after-load-complete)="handlePdfViewerLoadComplete($event)"
-        (page-rendered)="handlePageRendered($event)"
+        (text-layer-rendered)="handleTextLayerRendered()"
       >
       </pdf-viewer>
+      <rc-spinner [isLoading]="isBookLoading"></rc-spinner>
     </mat-card>
+    <div class="mt-2 text-center">
+      <button
+        mat-flat-button
+        color="accent"
+        [disabled]="!isBookCurrentPageCanBeSaved"
+        (click)="saveCurrentBookPage()"
+      >
+        Save current page
+      </button>
+    </div>
   </div>
 </div>
 

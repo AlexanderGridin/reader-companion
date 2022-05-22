@@ -11,7 +11,6 @@
     mat-icon-button
     aria-label="Icon-button with menu icon"
     class="menu-button"
-    (focus)="handleFocus()"
     (click)="toggleSidebar()"
   >
     <mat-icon>menu</mat-icon>
@@ -27,11 +26,13 @@
 </ng-template>
 
 <ng-template #rightColumn>
-  <button mat-icon-button aria-label="Icon-button with heart icon">
+  <button
+    *ngIf="isDisplayFavoriteButton"
+    mat-icon-button
+    aria-label="Icon-button with heart icon"
+    [color]="isFavoriteButtonActive ? 'accent' : ''"
+    (click)="toggleFavoriteButton()"
+  >
     <mat-icon>favorite</mat-icon>
-  </button>
-
-  <button mat-icon-button aria-label="Icon-button with share icon">
-    <mat-icon>share</mat-icon>
   </button>
 </ng-template>

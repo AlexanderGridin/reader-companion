@@ -5,4 +5,5 @@ export interface Book {
   fileUrl: string;
   coverUrl: string;
   currentPage: number;
+  isFavorite: boolean;
 }

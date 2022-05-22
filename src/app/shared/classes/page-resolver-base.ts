@@ -8,7 +8,7 @@ export abstract class PageResolverBase<PageModel>
   implements Resolve<PageModel | null>
 {
   private routerParam!: string | null;
-  private apiService!: ApiServiceBase<PageModel, PageModel>; // TODO: update after base api service class will be implemented
+  private apiService!: ApiServiceBase<PageModel, PageModel>;
 
   constructor(
     @Inject('')

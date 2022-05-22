@@ -20,7 +20,8 @@ export class BookService extends ApiServiceBase<Book, Book> {
     throw new Error('Method not implemented');
   }
 
-  public updateEntity(): Observable<Book> {
-    throw new Error('Method not implemented');
+  public updateEntity(id: number, entity: Book): Observable<Book> {
+    const apiUrl = getFullApiUrl('books/${id}').replace('${id}', id.toString());
+    return this.http.put<Book>(apiUrl, entity);
   }
 }
