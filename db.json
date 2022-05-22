@@ -6,7 +6,8 @@
       "totalPages": 321,
       "fileUrl": "/assets/books/files/angular-ninja.pdf",
       "coverUrl": "/assets/books/covers/angular-ninja.jpg",
-      "currentPage": 41
+      "currentPage": 39,
+      "isFavorite": false
     },
     {
       "id": 2,
@@ -14,7 +15,8 @@
       "totalPages": 305,
       "fileUrl": "/assets/books/files/computer-science.pdf",
       "coverUrl": "/assets/books/covers/computer-science.jpg",
-      "currentPage": 5
+      "currentPage": 16,
+      "isFavorite": true
     },
     {
       "id": 3,
@@ -22,7 +24,7 @@
       "totalPages": 928,
       "fileUrl": "/assets/books/files/linux-bible.pdf",
       "coverUrl": "/assets/books/covers/linux-bible.jpg",
-      "currentPage": 105
+      "currentPage": 109
     }
   ],
   "notes": [

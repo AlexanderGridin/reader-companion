@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { HeaderService } from '@shared/services/header/header.service';
 import { PageTitleService } from '@shared/services/page-title/page-title.service';
 import { SidebarService } from '@shared/services/sidebar/sidebar.service';
 
@@ -9,12 +10,12 @@ import { SidebarService } from '@shared/services/sidebar/sidebar.service';
 })
 export class HeaderComponent {
   public pageTitle!: string;
-
   public readonly appName = 'Read Companion';
 
   constructor(
     private readonly sidebarService: SidebarService,
-    private readonly pageTitleService: PageTitleService
+    private readonly pageTitleService: PageTitleService,
+    private readonly headerService: HeaderService
   ) {
     this.pageTitleService.title.subscribe((title) => {
       this.pageTitle = title;
@@ -29,7 +30,15 @@ export class HeaderComponent {
     this.sidebarService.close();
   }
 
-  public handleFocus(): void {
-    console.log('button focused');
+  public toggleFavoriteButton(): void {
+    this.headerService.toggleFavoriteButton();
+  }
+
+  public get isDisplayFavoriteButton(): boolean {
+    return !this.headerService.favoriteButton.isHidden;
+  }
+
+  public get isFavoriteButtonActive(): boolean {
+    return this.headerService.favoriteButton.isActive;
   }
 }

@@ -54,7 +54,7 @@ export abstract class PageBase<PageModel> implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  private setSubscriptions(): void {
+  protected setSubscriptions(): void {
     this.setRouterEventsSubscription();
     this.setActivatedRouteDataSubscription();
   }
